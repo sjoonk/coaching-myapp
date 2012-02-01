@@ -1,0 +1,21 @@
+<a href="/posts">Index</a>
+
+<%= link_to "Index", "/posts/1/comments" %>
+<%= link_to "Index", post_comments_path(1) %>
+<%= link_to "Index", [@post, @post.comments] %>
+<%= link_to "Home", home_path %>
+
+/posts/comments
+
+resources :posts, :as => 'p' do |p|
+	p.resources :comment
+end
+
+GET /posts => "posts#index"
+
+# url_helper
+
+posts_path
+posts_url
+
+# 

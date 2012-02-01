@@ -1,0 +1,11 @@
+
+<% form_for [@entry, Comment.new] do |f| %>
+	<%= f.text_area :body %>
+	<%= f.submit %>
+<% end %>
+
+<ul>
+	<% @entry.comments.each do |c| %>
+	<li><%= c.body %><%= c.created_at %></li>
+	<% end %>
+</ul>
