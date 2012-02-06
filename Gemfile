@@ -11,6 +11,7 @@ gem "formtastic"
 
 # day-3
 gem 'bcrypt-ruby', :require => 'bcrypt'  
+gem "devise"
 
 group :development do
   gem 'wirble'

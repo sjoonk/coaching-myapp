@@ -1,13 +1,15 @@
 Myapp::Application.routes.draw do
 
+  devise_for :users
+
+  # get "login" => "sessions#new"
+  # get "logout" => "sessions#destroy"  
+  # 
+  # resources :users
+  # resource :sessions
+
   get "/about" => "pages#about"
   get "/terms" => "pages#terms"
-
-  get "login" => "sessions#new"
-  get "logout" => "sessions#destroy"  
-
-  resources :users
-  resource :sessions
 
   resources :entries do
     resources :comments

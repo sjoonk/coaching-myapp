@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+  before_filter :authenticate_user! #, :except => [:index, :show]
 
   def index
     @entries = Entry.order_by([:created_at, :desc]).all
