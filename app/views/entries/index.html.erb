@@ -1,18 +1,27 @@
 <h1>Entries#index</h1>
 <p>Find me in app/views/entries/index.html.erb</p>
 
-<%= link_to "New Entry", "/entries/new" %>
 
-<% if @entries.empty? %>
+<% if @entries %>
 
 	<ul class="entries">
 	<% @entries.each do |entry| %>
-		<li><%= entry.title %></li>
+		<li>
+			<%= link_to entry.title, entry %>
+			<abbr class="timeago" title="<%= entry.created_at %>"><%= entry.created_at.to_s(:db) rescue nil %></abbr>
+		</li>
 	<% end %>	
 	</ul>
 
 <% else %>
-
 	No Entries.
-
 <% end %>	
+
+<%= link_to "Home", root_path %> |
+<%= link_to "New Entry", new_entry_path %>
+
+<script type="text/javascript" charset="utf-8">
+jQuery(document).ready(function() {
+  jQuery("abbr.timeago").timeago();
+});
+</script>

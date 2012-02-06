@@ -2,8 +2,13 @@
 <p>Find me in app/views/entries/show.html.erb</p>
 
 <h2><%= @entry.title %></h2>
-<p>
+<p class="body">
 	<%= @entry.body %>
 </p>	
 
+<%= link_to "Home", root_path %> |
+<%= link_to "Entries", entries_path %>
+<hr />
+
+<h3>Comments</h3>
 <%= render "shared/comments" %>

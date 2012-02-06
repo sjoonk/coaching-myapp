@@ -29,6 +29,7 @@ GEM
       activesupport (= 3.0.10)
     activesupport (3.0.10)
     arel (2.0.10)
+    bcrypt-ruby (3.0.1)
     bson (1.5.2)
     bson_ext (1.5.2)
       bson (= 1.5.2)
@@ -88,6 +89,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby
   bson_ext (~> 1.5)
   formtastic
   mongoid (~> 2.2)

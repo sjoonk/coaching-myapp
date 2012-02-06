@@ -1,8 +1,14 @@
 <h1>Entries#new</h1>
 <p>Find me in app/views/entries/new.html.erb</p>
 
-<%= semantic_form_for @entry do |f| %>
-	<%= f.input :title %>
-	<%= f.input :body %>
-	<%= f.submit "Save" %>
+<%= form_for @entry do |f| %>
+	<div>
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	</div>
+	<div>
+		<%= f.label :body %>
+		<%= f.text_area :body, :rows => 5 %>
+	</div>	
+	<%= f.submit "Save", :class => 'btn' %>
 <% end %>	

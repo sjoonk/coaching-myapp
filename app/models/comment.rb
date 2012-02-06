@@ -3,4 +3,5 @@ class Comment
   include Mongoid::Timestamps
   field :body, :type => String
   embedded_in :entry
+
 end

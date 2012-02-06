@@ -1,22 +1,21 @@
 Myapp::Application.routes.draw do
 
-  # get "entries" => 'entries#index'
-  # get "entries/index"
-  # 
-  # get "entries/new"
-  # 
-  # get "entries/:id" => 'entries#show'
-  # 
-  # get "entries/show"
-  # 
-  # post "/entries" => 'entries#create'
+  get "/about" => "pages#about"
+  get "/terms" => "pages#terms"
+
+  get "login" => "sessions#new"
+  get "logout" => "sessions#destroy"  
+
+  resources :users
+  resource :sessions
 
   resources :entries do
-    # post "/entries/:id/comments" => 'comments#create'
     resources :comments
   end  
   
   resources :posts
+
+  root :to => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -67,7 +66,6 @@ Myapp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "welcome#hello"
   
   # See how all your routes lay out with "rake routes"
 
