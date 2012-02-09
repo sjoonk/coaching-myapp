@@ -46,7 +46,7 @@ module Myapp
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     
-    config.middleware.insert_after Rack::Runtime, Rack::GridFS,
-      :prefix => 'images', :lookup => :path, :database => "myapp_#{Rails.env}"    
+    # config.middleware.insert_after Rack::Runtime, Rack::GridFS,
+    #   :prefix => 'images', :lookup => :path, :database => "myapp_#{Rails.env}"    
   end
 end

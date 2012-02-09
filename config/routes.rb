@@ -11,8 +11,7 @@ Myapp::Application.routes.draw do
   get "/about" => "pages#about"
   get "/terms" => "pages#terms"
 
-  # mount Rack::GridFS::Endpoint.new(:db => Mongoid.database), :at => "/images"
-  # match "/images" => Rack::GridFS::Endpoint.new(:db => Mongoid.database)
+  mount Rack::GridFS::Endpoint.new(:db => Mongoid.database, :lookup => :path), :at => "/images"
 
   resources :entries do
     resources :comments
