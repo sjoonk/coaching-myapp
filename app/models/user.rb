@@ -6,7 +6,11 @@ class User
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   field :name, :type => String
-
+  
+  has_many :entries
+  
+  def to_s; email end
+  
   # 
   # field :email, :type => String
   # field :password_salt, :type => String

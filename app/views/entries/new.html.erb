@@ -1,7 +1,7 @@
 <h1>Entries#new</h1>
 <p>Find me in app/views/entries/new.html.erb</p>
 
-<%= form_for @entry do |f| %>
+<%= form_for @entry, :html => {:multipart => true} do |f| %>
 	<div>
 		<%= f.label :title %>
 		<%= f.text_field :title %>
@@ -9,6 +9,10 @@
 	<div>
 		<%= f.label :body %>
 		<%= f.text_area :body, :rows => 5 %>
-	</div>	
+	</div>
+	<div>	
+		<%= f.label :photo %>	
+		<%= f.file_field :photo %>
+	</div>
 	<%= f.submit "Save", :class => 'btn' %>
 <% end %>	

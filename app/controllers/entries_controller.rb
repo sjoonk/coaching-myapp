@@ -14,9 +14,20 @@ class EntriesController < ApplicationController
   end
 
   def create
-    # raise params.inspect
-    @entry = Entry.create(params[:entry])
+    @entry = current_user.entries.build(params[:entry])
+    @entry.save
     redirect_to @entry
+  end
+  
+  def update
+    @entry = current_user.entries.find(params[:id])
+    @entry.update_attributes(params[:entry])
+    redirect_to @entry
+  end
+  
+  def destroy
+    current_user.entries.find(params[:id]).destroy
+    redirect_to entries_path
   end
   
 end

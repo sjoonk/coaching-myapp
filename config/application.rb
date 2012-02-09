@@ -19,6 +19,8 @@ module Myapp
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += %W(#{config.root}/lib)
+    require 'country_select'
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -43,5 +45,8 @@ module Myapp
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    config.middleware.insert_after Rack::Runtime, Rack::GridFS,
+      :prefix => 'images', :lookup => :path, :database => "myapp_#{Rails.env}"    
   end
 end
