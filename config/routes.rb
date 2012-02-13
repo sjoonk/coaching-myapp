@@ -15,7 +15,13 @@ Myapp::Application.routes.draw do
 
   resources :entries do
     resources :comments
+    # resources :likes, :only => [:create, :destroy]
   end  
+  
+  post "/entries/:id/like" => 'likes#create', :as => :like
+  post "/entries/:id/dislke" => 'likes#destroy', :as => :dislike
+  
+  get '/entries/tag/:tag' => 'entries#tag', :as => :entries_tag
   
   resources :posts
 

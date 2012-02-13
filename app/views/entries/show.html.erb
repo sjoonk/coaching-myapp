@@ -7,11 +7,27 @@
 	by <%= link_to @entry.user %> at <%= @entry.created_at.to_s(:db) %>
 </div>	
 
+<div class="meta">
+	<div>Category: <%= link_to @entry.category.camelize %></div>
+	<div>Tags: 
+		<%=raw @entry.tags.map { |tag| link_to tag, entries_tag_path(tag) }.join(', ') %>
+	</div>
+	<div class="like">
+		<%= @entry.likes.size %> Like(s).
+		<% if current_user.likes?(@entry) %>
+			You already liked it! 
+			<%= link_to image_tag('star_inactive.png', :alt => "Cancel Like"), dislike_path(@entry), :method => :post %>
+		<% else %>
+			<%= link_to image_tag('star_active.png', :alt => "Like!"), like_path(@entry), :method => :post %>
+		<% end %>
+	</div>	
+</div>	
+	
 <p class="body">
 	<%= @entry.body %>
 </p>	
 
-<%= image_tag @entry.photo.url %>
+<%= image_tag @entry.photo.url if @entry.photo? %>
 
 <%= link_to "Home", root_path %> |
 <%= link_to "Entries", entries_path %> |

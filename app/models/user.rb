@@ -11,6 +11,10 @@ class User
   
   def to_s; email end
   
+  def like(entry); entry.likes.create(:user => self) end
+  def dislike(entry); entry.likes.where(:user_id => self.id).destroy_all end
+  def likes?(entry); !!entry.likes.where(:user_id => self.id).first end
+  
   # 
   # field :email, :type => String
   # field :password_salt, :type => String

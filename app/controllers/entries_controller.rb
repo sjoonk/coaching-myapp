@@ -13,8 +13,14 @@ class EntriesController < ApplicationController
     @entry = Entry.new
   end
 
+  def tag
+    @entries = Entry.tagged_with(params[:tag])
+    render "index"
+  end
+
   def create
     @entry = current_user.entries.build(params[:entry])
+    @entry.tags = params[:tags].split(',').map { |t| t.strip } if params[:tags]
     @entry.save
     redirect_to @entry
   end

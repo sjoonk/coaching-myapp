@@ -14,5 +14,16 @@
 		<%= f.label :photo %>	
 		<%= f.file_field :photo %>
 	</div>
+	
+	<div>	
+		<%= f.label :category %>	
+		<%= f.select :category, Entry::CATEGORIES %>
+	</div>
+
+	<div>	
+		<%= f.label :tags, "Tags: Separate with comma(,)" %>	
+		<%= text_field_tag :tags, '', :size => 50 %>
+	</div>
+	
 	<%= f.submit "Save", :class => 'btn' %>
 <% end %>	

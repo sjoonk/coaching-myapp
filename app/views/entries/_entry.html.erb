@@ -1,0 +1,5 @@
+<li>
+	<%= link_to entry.title, entry %>
+	<abbr class="timeago" title="<%= entry.created_at %>"><%= entry.created_at.to_s(:db) rescue nil %></abbr>
+	<%= link_to "Delete", entry, :method => :delete %>
+</li>
