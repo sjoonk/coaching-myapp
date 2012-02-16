@@ -1,13 +1,33 @@
-<ul>
-	<% @entry.comments.each do |c| %>
-	<li><%= c.body %> <%= time_ago_in_words(c.created_at) %></li>
-	<% end %>
+<ul class="comments">
+	<%= render @entry.comments %>
+	<%#= render :partial => 'comment', :collection => @entry.comments %>
 </ul>
 
-<% form_for [@entry, Comment.new] do |f| %>
+<% form_for [@entry, Comment.new], :remote => true do |f| %>
 	<div>
 		<%= f.text_area :body, :rows => 3 %>
 	</div>	
 	<%= f.submit %>
 <% end %>
 
+
+<script type="text/javascript" charset="utf-8">
+
+$('.delete').live('ajax:success', function() {
+	$(this).closest('li').fadeOut();
+});
+
+// $('.delete').click(function() {
+// 	var $this = $(this);
+// 	$.ajax({
+// 		url: $this.attr('href'),
+// 		type: 'DELETE',
+// 		success: function() {
+// 			// alert('delete!');
+// 			$this.closest('li').fadeOut();
+// 		}
+// 	});
+// 	return false;
+// });
+	
+</script>

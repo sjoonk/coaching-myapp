@@ -19,6 +19,9 @@ gem "carrierwave-mongoid", :require => 'carrierwave/mongoid'
 gem "kaminari"
 gem "rack-gridfs", :require => 'rack/gridfs'
 
+# day-5
+gem "jquery-rails"
+
 group :development do
   gem 'wirble'
 end

@@ -6,7 +6,20 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @entry.comments << @comment
     @entry.save
-    redirect_to @entry
+    respond_to do |format|
+      format.html { redirect_to @entry }
+      format.js
+    end
+  end
+
+  def destroy
+    @entry = Entry.find(params[:entry_id])
+    @entry.comments.find(params[:id]).destroy
+    if request.xhr?
+      head :ok
+    else  
+      redirect_to @entry
+    end  
   end
   
 end

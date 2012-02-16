@@ -1,8 +1,19 @@
 class EntriesController < ApplicationController
   before_filter :authenticate_user! #, :except => [:index, :show]
 
+  # GET /entries?cate=apple
   def index
-    @entries = Entry.order_by([:created_at, :desc]).all
+    @entries = Entry
+    @entries = @entries.where(:category => params[:cate]) if params[:cate]
+    @entries = @entries.order_by([:created_at, :desc]).page(params[:page]).per(3) 
+
+    respond_to do |format|
+      format.html {
+        render @entries if request.xhr?
+      }
+      format.js
+      format.json { render :json => @entries }
+    end
   end
 
   def show

@@ -1,7 +1,7 @@
 <h1>Entries#show</h1>
 <p>Find me in app/views/entries/show.html.erb</p>
 
-<h2><%= @entry.title %></h2>
+<h2><%= @entry.title %>(<span class="comment_count"><%= @entry.comments.size %></span>)</h2>
 
 <div class="atby">
 	by <%= link_to @entry.user %> at <%= @entry.created_at.to_s(:db) %>
