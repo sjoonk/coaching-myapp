@@ -1,6 +1,9 @@
 Myapp::Application.routes.draw do
 
-  devise_for :users
+  # devise_for :users
+  devise_for :users, :controllers => { 
+    :omniauth_callbacks => "users/omniauth_callbacks" 
+  }
 
   # get "login" => "sessions#new"
   # get "logout" => "sessions#destroy"  
@@ -12,6 +15,8 @@ Myapp::Application.routes.draw do
   get "/terms" => "pages#terms"
 
   mount Rack::GridFS::Endpoint.new(:db => Mongoid.database, :lookup => :path), :at => "/images"
+
+  resources :users
 
   resources :entries do
     resources :comments

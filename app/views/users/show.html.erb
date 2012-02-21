@@ -1,0 +1,24 @@
+<h1><%= @user %>'s Profile</h1>
+
+<ul class="thumbnails">
+  <li class="span3">
+    <a href="#" class="thumbnail">
+			<%= image_tag @user.profile_image %>
+    </a>
+  </li>
+	<li>
+		<%= link_to "Edit Profile", '#', :class => "btn btn-primary" %>
+	</li>	
+</ul>
+
+<h3>Recent Activities</h3>
+
+<ul class="activities">
+<% @activities.each do |act| %>
+	<li>
+		<%= link_to act.actor["email"], user_path(act.actor["id"]) %> 
+		created a 
+		<%= link_to act.object["title"], entry_path(act.object["id"]) %>.
+	</li>
+<% end %>	
+</ul>

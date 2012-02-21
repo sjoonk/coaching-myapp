@@ -33,6 +33,7 @@ class EntriesController < ApplicationController
     @entry = current_user.entries.build(params[:entry])
     @entry.tags = params[:tags].split(',').map { |t| t.strip } if params[:tags]
     @entry.save
+    current_user.publish_activity(:new_entry, :object => @entry)
     redirect_to @entry
   end
   

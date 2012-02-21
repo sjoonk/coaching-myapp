@@ -19,8 +19,14 @@ gem "carrierwave-mongoid", :require => 'carrierwave/mongoid'
 gem "kaminari"
 gem "rack-gridfs", :require => 'rack/gridfs'
 
-# day-5
+# day-6
 gem "jquery-rails"
+
+# day-7
+gem "streama"
+gem 'multi_json'
+gem 'omniauth-twitter'
+
 
 group :development do
   gem 'wirble'

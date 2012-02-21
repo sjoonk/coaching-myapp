@@ -2,3 +2,8 @@
 	padding-left: 13px;
 	background: url(/images/logout.png) no-repeat left;
 }
+
+#top_nav {
+	text-align: right;
+	margin: 5px 5px 0 0;
+}
