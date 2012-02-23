@@ -7,6 +7,7 @@ class User
          :omniauthable
 
   field :name, :type => String
+  field :comments_count, :type => Integer, :default => 0
 
   has_many :entries
   
@@ -50,6 +51,8 @@ class User
   def display_name
     if twitter_id
       "#{twitter_name}(@#{twitter_screen_name})"
+    # elsif facebook_id
+    #   facebook_name  
     else
       email
     end
