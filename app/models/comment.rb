@@ -13,11 +13,13 @@ class Comment
   protected
 
   def increment_count
-    self.user.comments_count += 1
+    # self.user.update_attribute(:comments_count, self.user.comments_count += 1)
+    self.user.inc(:comments_count, 1)
   end
   
   def decrement_count
-    self.user.comments_count -=1
+    # self.user.update_attribute(:comments_count, self.user.comments_count -= 1)
+    self.user.inc(:comments_count, -1)
   end  
   
 end

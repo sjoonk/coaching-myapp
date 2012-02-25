@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     # raise params[:entry_id].inspect
     @entry = Entry.find(params[:entry_id])
     @comment = Comment.new(params[:comment])
+    @comment.user = current_user
     @entry.comments << @comment
     @entry.save
     respond_to do |format|
